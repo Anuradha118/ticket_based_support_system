@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<div class="container">
+    <h1>SUPPORT TICKETS</h1>
+    <hr>
+    <div class="row">
+      <div class="col-xs-7 col-sm-6 col-md-8">
+          <a ng-hide="main.admin" ng-href="#/addTicket" ng-click="main.add()" class="btn btn-primary">
+            <span class="glyphicon glyphicon-plus"></span>
+            Raise a Ticket
+          </a>
+      </div>
+      <div class="col-xs-5 col-sm-6 col-md-4">
+
+        <!-- Search Widget -->
+        <div class="card my-4">
+          <h5 class="card-header">Search</h5>
+          <div class="card-body">
+            <div class="input-group">
+              <input type="text" class="form-control" ng-model="main.search" placeholder="Search for...">
+              <span class="input-group-btn">
+                <button class="btn btn-secondary" type="button">Go!</button>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <h3>TICKET HISTORY</h3>
+
+    <br>
+    <br>
+
+    <div class="row">
+      <div class=" col-md-12">
+          <p>Click on theView/Reply button for more details.</p>
+          <br>
+          <br>
+          <div class="table-responsive">
+            <table class="table col-xs-12 table-bordered">
+                <thead>
+                    <th scope="col">Sl No.</th>
+                    <th scope="col">Ticket ID</th>
+                    <th scope="col">Status 
+                      <select ng-model="main.status">
+                      <option value=" ">All</option>                  
+                      <option value="open">Open</option>
+                      <option value="close">Close</option>
+                    </ng-model>
+                      </div>
+                    </th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Posted By</th>
+                    <th scope="col">View/Reply</th>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="ticket in main.tickets | filter:main.status | filter:main.search">
+                        <td><span  ng-class="{'glyphicon glyphicon-folder-open':ticket.status==='open','glyphicon glyphicon-folder-close':ticket.status==='close'}"></span></td>
+                        <td> {{ticket.ticketId}}</td>
+                        <td><span class="label" ng-class="{'label-success':ticket.status==='close','label-primary':ticket.status==='open'}">{{ticket.status|uppercase}}</span></td>
+                        <td>{{ticket.title}}</td>
+                        <td>{{ticket.userName}}</td>
+                        <td><button type="button" class="btn btn-warning" ng-click="main.singleTicket(ticket.ticketId)">View</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>   
+      </div>
+    </div>
+
+  <!-- /.row -->
+
+</div>
+<!-- /.container -->
+
+<!--</body>
+
+</html>-->

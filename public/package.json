@@ -1,0 +1,18 @@
+{
+  "name": "public",
+  "version": "1.0.0",
+  "description": "Ticket Based Support System",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "angular-jwt": "^0.1.9",
+    "bootstrap": "^4.0.0",
+    "jquery": "^3.3.1",
+    "ng-file-upload": "^12.2.13",
+    "tether": "^1.4.3"
+  }
+}
