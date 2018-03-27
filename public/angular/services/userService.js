@@ -4,29 +4,29 @@ myApp.service('UserService', function ($http,$window,jwtHelper) {
     var store=$window.localStorage;
     var authToken='';
     var user='';
-    this.baseUrl = "http://localhost:3000";
+    // this.baseUrl = "http://localhost:3000";
 
     this.signUp = function (data) {
 
-        return $http.post(main.baseUrl + '/register', data);
+        return $http.post('/register', data);
 
     }; // end registering user account
 
     this.signIn = function (data) {
 
-        return $http.post(main.baseUrl + '/login', data);
+        return $http.post('/login', data);
 
     }; //end Login to Account
 
     this.forgotPassword = function (data) {
 
-        return $http.post(main.baseUrl + '/forgot-password', data);
+        return $http.post('/forgot-password', data);
 
     }; //end forgot password email intake
 
     this.verifyOtp = function (data) {
 
-        return $http.get(main.baseUrl + '/verify-otp', {
+        return $http.get('/verify-otp', {
             params: {
                 otp: data
             }
@@ -35,7 +35,7 @@ myApp.service('UserService', function ($http,$window,jwtHelper) {
 
     this.resetPassword = function (data) {
 
-        return $http.post(main.baseUrl + '/reset-password', data);
+        return $http.post('/reset-password', data);
 
     }; //end of reset-password
 
