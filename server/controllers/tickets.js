@@ -6,7 +6,6 @@ var fs=require('fs');
 var randomString=require('random-string');
 var multer=require('multer');
 var nodemailer=require('nodemailer');
-var configAuth=require('./../configs/auth');
 var responseGenerator=require('./../utils/responsegenerator');
 var authenticate=require('./../utils/authenticate');
 var User=require('./../models/User');

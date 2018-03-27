@@ -8,7 +8,6 @@ var bcrypt=require('bcryptjs');
 var nodemailer=require('nodemailer');
 var _=require('lodash');
 var User=require('./../models/User');
-var configAuth=require('./../configs/auth');
 var responseGenerator=require('./../utils/responsegenerator');
 var custValidator=require('./../utils/validator');
 var eventEmitter = new events.EventEmitter();
