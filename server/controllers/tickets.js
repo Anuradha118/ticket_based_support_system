@@ -1,3 +1,4 @@
+require('./../configs/config');
 var router=require('express').Router();
 var mongoose=require('./../db/mongoose');
 var events=require('events');
@@ -66,8 +67,8 @@ eventEmitter.on('query_posted',function(newTicket){
         var transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
-                user: configAuth.username,
-                pass: configAuth.password
+                user: process.env.username,
+                pass: process.env.password
             }
         });
 
@@ -93,8 +94,8 @@ eventEmitter.on('status_changed',function(data){
     var transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-            user: configAuth.username,
-            pass: configAuth.password
+            user: process.env.username,
+            pass: process.env.password
         }
     });
 
@@ -129,8 +130,8 @@ eventEmitter.on('message-post',function(data){
     var transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-            user: configAuth.username,
-            pass: configAuth.password
+            user: process.env.username,
+            pass: process.env.password
         }
     });
 
@@ -156,8 +157,8 @@ eventEmitter.on('admin-message',function(data){
     var transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-            user: configAuth.username,
-            pass: configAuth.password
+            user: process.env.username,
+            pass: process.env.password
         }
     });
 

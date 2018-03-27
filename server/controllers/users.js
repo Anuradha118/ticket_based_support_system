@@ -1,3 +1,4 @@
+require('./../configs/config');
 var router=require('express').Router();
 var mongoose=require('./../db/mongoose');
 var events=require('events');
@@ -21,8 +22,8 @@ eventEmitter.on('welcome_mail',function(data){
     var transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-            user: configAuth.username,
-            pass: configAuth.password
+            user: process.env.username,
+            pass: process.env.password
         }
     });
 
@@ -52,8 +53,8 @@ eventEmitter.on('send_otp',function(info){
     var transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-            user: configAuth.username,
-            pass: configAuth.password
+            user: process.env.username,
+            pass: process.env.password
         }
     });
 
