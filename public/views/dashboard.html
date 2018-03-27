@@ -36,7 +36,8 @@
           <p>Click on theView/Reply button for more details.</p>
           <br>
           <br>
-          <div class="table-responsive">
+          <strong ng-show='main.tickets.length===0'>Currently there are no tickets to display. Please raise a ticket if you have any query.</strong>
+          <div class="table-responsive" ng-show='main.tickets.length>0'>
             <table class="table col-xs-12 table-bordered">
                 <thead>
                     <th scope="col">Sl No.</th>

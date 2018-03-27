@@ -72,7 +72,7 @@ eventEmitter.on('query_posted',function(newTicket){
         });
 
         const mailOptions = {
-            from: 'edSupport <anuradha.sahoo1993@gmail.com>', // sender address
+            from: 'edSupport <adsahoo.24@gmail.com>', // sender address
             to: newTicket.email, // list of receivers
             subject: `Your query has been posted successfully`, // Subject line
             html: `<p>Hello,
@@ -98,7 +98,7 @@ eventEmitter.on('status_changed',function(data){
         }
     });
 
-    var mails=[data.email,"anuradha.sahoo1993@gmail.com"];
+    var mails=[data.email,"adsahoo.24@gmail.com"];
     var mailList=mails.toString();
     var msg='';
     if(data.status=='open'){
@@ -107,7 +107,7 @@ eventEmitter.on('status_changed',function(data){
         msg='closed';
     }
     const mailOptions = {
-        from: 'edSupport <anuradha.sahoo1993@gmail.com>', // sender address
+        from: 'edSupport <adsahoo.24@gmail.com>', // sender address
         to: mailList, // list of receivers
         subject: 'Status Changed!!', // Subject line
         html: `<p>Hello,
@@ -135,8 +135,8 @@ eventEmitter.on('message-post',function(data){
     });
 
     const email = {
-        from: 'edSupport <anuradha.sahoo1993@gmail.com>', // sender address
-        to: 'anuradha.sahoo1993@gmail.com', // list of receivers
+        from: 'edSupport <adsahoo.24@gmail.com>', // sender address
+        to: 'adsahoo.24@gmail.com', // list of receivers
         subject: 'Message from User', // Subject line
         html: `<p>Hello,
                     A new message has been received from User, regarding query with id <span style="color:red">${data}</span> Respond to resolve the query!
@@ -162,7 +162,7 @@ eventEmitter.on('admin-message',function(data){
     });
 
     const email = {
-        from: 'edTickets <anuradha.sahoo1993@gmail.com>', // sender address
+        from: 'edTickets <adsahoo.24@gmail.com>', // sender address
         to: data.user, // list of receivers
         subject: 'Message from Admin', // Subject line
         html: `<p>Hello,

@@ -27,7 +27,7 @@ eventEmitter.on('welcome_mail',function(data){
     });
 
     const email = {
-        from: 'edSupport <anuradha.sahoo1993@gmail.com>', // sender address
+        from: 'edSupport <adsahoo.24@gmail.com>', // sender address
         to: data.email, // list of receivers
         subject: 'Welcome to edSupport', // Subject line
         html: `<p>Hello! ${data.firstname} ${data.lastname} Your account is created successfully.</p>` // plain text body
@@ -58,7 +58,7 @@ eventEmitter.on('send_otp',function(info){
     });
 
     const email = {
-        from: 'edSupport <anuradha.sahoo1993@gmail.com>', // sender address
+        from: 'edSupport <adsahoo.24@gmail.com>', // sender address
         to: info.email, // list of receivers
         subject: 'Password Reset', // Subject line
         html: `<p>You have initiated a password reset.<br/>OTP for resetting the password : <b style="color:red">${info.id}</b>.Never share the OTP with anyone.</p>` // plain text body
