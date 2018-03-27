@@ -2,7 +2,7 @@ myApp.controller('addTicketCtrl',['$location','$rootScope','TicketService','Uplo
 
     var main=this;
     main.token=localStorage.getItem('x-auth');
-    
+    // console.log(process.env.NODE_ENV);
     //function called when raise ticket button is clicked
     main.createTicket=function(){
         main.isfileValid();
@@ -20,7 +20,7 @@ myApp.controller('addTicketCtrl',['$location','$rootScope','TicketService','Uplo
     //if file is valid then it is uploaded
     main.upload=function(file){
         Upload.upload({
-            url:'http://localhost:3000/user/upload',
+            url:'https://fathomless-ocean-24339.herokuapp.com/user/upload',
             data:{file:file}
         }).then(function(response){
             console.log(response);
