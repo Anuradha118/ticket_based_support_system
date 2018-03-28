@@ -46,7 +46,7 @@ eventEmitter.on('welcome_mail',function(data){
 eventEmitter.on('send_otp',function(info){
 
     // send otp to the registered mobile number and email address.
-    const send_otp=new sendotp('204171AbIFqNi4305aae6ec7',"OTP for resetting the password is {{otp}}. Please donot share it with anybody");
+    const send_otp=new sendotp(process.env.MSG91_AUTHKEY,"OTP for resetting the password is {{otp}}. Please donot share it with anybody");
     send_otp.send(info.mobile,"EdSupport",info.id,function(error,data,response){
         console.log(data);
     });
