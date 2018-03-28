@@ -31,7 +31,6 @@ app.use(bodyParser.urlencoded({
   limit: '50mb'
 }));
 
-console.log(path.join(__dirname, './../public/css'));
 //Set view to angular folder
 app.use(express.static(path.join(__dirname, './../public')));
 

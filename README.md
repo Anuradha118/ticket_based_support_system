@@ -15,16 +15,17 @@ to get the queries from their users and get it resolved.
     - User password is saved in hash form.
 2. User Login.
 3. User is authenticated using JWT.
-4. User raise a ticket in the system realted to his/her query.
+4. User raise a ticket in the system related to his/her query.
 5. User can upload a file related to his query.
 6. User can have chat like communication with the Admin.
-7. User can change the status of the ticket to 'close' or 'open' depending on whether the query is resolved or not.
+7. User can cancel the raise of the ticket if he doesn't want to raise a ticket.
+8. User can change the status of the ticket to 'close' or 'open' depending on whether the query is resolved or    not.
     - On status change, an notification email is sent to the user and admin.
-8. For Admin access to the system, one should signup with the 'admin@edSupport.com' email address.
-9. Admin can view all the tickets raised in the support system.
-10. Admin can also filter the tickets based on the status.
-11. Admin can delete the ticket from the system.
-12. Admin have chat like communication with the User.
+9. For Admin access to the system, one should signup with the 'admin@edSupport.com' email address.
+10. Admin can view all the tickets raised in the support system.
+11. Admin can also filter the tickets based on the status.
+12. Admin can delete the ticket from the system.
+13. Admin have chat like communication with the User.
 
 # Additional Features
   - On Status change of ticket, an email notification is sent to the user.
@@ -64,7 +65,8 @@ First run the local mongodb server, then add config.json inside server->configs 
 
   - Once successful login, user can see the dashboard page with no tickets, as you are new user.
   - User can raise a ticket, by clicking on 'Raise a Ticket' button.
-  - After successfully creating a ticket, user will be redirected to the dashboard page, with all tickets raised by him.
+  - After successfully creating a ticket, user will be redirected to the dashboard page, with all tickets        raised by him.
+  - If user doesn't feel like creating a ticket, he can click on the 'Cancel' button to go back to dashboard     page.
   - User can View the ticket details by clicking on 'View/Reply' button present in dashboard page.
   - User can see all the details related to particular query.
   - User can have direct chat with the Admin of the system through the chat panel present in the view.

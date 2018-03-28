@@ -55,4 +55,8 @@ myApp.controller('addTicketCtrl',['$location','$rootScope','TicketService','Uplo
                 console.log(response);
             });
     };
+
+    main.cancel=function(){
+        $location.path('/dashboard');
+    };
 }]);
