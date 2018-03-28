@@ -6,6 +6,7 @@ var fs=require('fs');
 var randomString=require('random-string');
 var multer=require('multer');
 var nodemailer=require('nodemailer');
+var sgTransport = require('nodemailer-sendgrid-transport');
 var responseGenerator=require('./../utils/responsegenerator');
 var authenticate=require('./../utils/authenticate');
 var User=require('./../models/User');
@@ -63,16 +64,16 @@ var upload=multer({
 
 //Event Emitter to send mail on new query posted
 eventEmitter.on('query_posted',function(newTicket){
-        var transporter = nodemailer.createTransport({
-            service: 'gmail',
-            auth: {
-                user: process.env.username,
-                pass: process.env.password
-            }
-        });
+    var options = {
+        auth: {
+            api_user: process.env.SENDGRID_USER,
+            api_key: process.env.SENDGRID_SECRET
+        }
+    };
+    var client = nodemailer.createTransport(sgTransport(options));
 
         const mailOptions = {
-            from: 'edSupport <adsahoo.24@gmail.com>', // sender address
+            from: 'edSupport <support@edSupport.com>', // sender address
             to: newTicket.email, // list of receivers
             subject: `Your query has been posted successfully`, // Subject line
             html: `<p>Hello,
@@ -80,7 +81,7 @@ eventEmitter.on('query_posted',function(newTicket){
                      </p>` // plain text body
         };
 
-        transporter.sendMail(mailOptions, function (err, info) {
+        client.sendMail(mailOptions, function (err, info) {
             if (err)
                 console.log(err);
             else
@@ -90,13 +91,13 @@ eventEmitter.on('query_posted',function(newTicket){
 
 //Event Emitter to send mail to user on ticket status change
 eventEmitter.on('status_changed',function(data){
-    var transporter = nodemailer.createTransport({
-        service: 'gmail',
+    var options = {
         auth: {
-            user: process.env.username,
-            pass: process.env.password
+            api_user: process.env.SENDGRID_USER,
+            api_key: process.env.SENDGRID_SECRET
         }
-    });
+    };
+    var client = nodemailer.createTransport(sgTransport(options));
 
     var mails=[data.email,"adsahoo.24@gmail.com"];
     var mailList=mails.toString();
@@ -107,14 +108,14 @@ eventEmitter.on('status_changed',function(data){
         msg='closed';
     }
     const mailOptions = {
-        from: 'edSupport <adsahoo.24@gmail.com>', // sender address
+        from: 'edSupport <support@edSupport.com>', // sender address
         to: mailList, // list of receivers
         subject: 'Status Changed!!', // Subject line
         html: `<p>Hello,
                     your query with id <span style="color:red">${data.id}</span> has been <span>${msg}</span></p>` // plain text body
     };
 
-    transporter.sendMail(mailOptions, function (err, info) {
+    client.sendMail(mailOptions, function (err, info) {
         if (err)
             console.log(err);
         else
@@ -126,16 +127,16 @@ eventEmitter.on('status_changed',function(data){
 //Event Emitter to send mail to admin when user sends a message for a particular query
 eventEmitter.on('message-post',function(data){
     console.log(data);
-    var transporter = nodemailer.createTransport({
-        service: 'gmail',
+    var options = {
         auth: {
-            user: process.env.username,
-            pass: process.env.password
+            api_user: process.env.SENDGRID_USER,
+            api_key: process.env.SENDGRID_SECRET
         }
-    });
+    };
+    var client = nodemailer.createTransport(sgTransport(options));
 
     const email = {
-        from: 'edSupport <adsahoo.24@gmail.com>', // sender address
+        from: 'edSupport <support@edSupport.com>', // sender address
         to: 'adsahoo.24@gmail.com', // list of receivers
         subject: 'Message from User', // Subject line
         html: `<p>Hello,
@@ -143,7 +144,7 @@ eventEmitter.on('message-post',function(data){
                 </p>` // plain text body
     };
 
-    transporter.sendMail(email, function (err, info) {
+    client.sendMail(email, function (err, info) {
         if (err)
             console.log(err);
         else
@@ -153,16 +154,16 @@ eventEmitter.on('message-post',function(data){
 
 //Event Emitter to send mail to user when admin sends message for a particular query
 eventEmitter.on('admin-message',function(data){
-    var transporter = nodemailer.createTransport({
-        service: 'gmail',
+    var options = {
         auth: {
-            user: process.env.username,
-            pass: process.env.password
+            api_user: process.env.SENDGRID_USER,
+            api_key: process.env.SENDGRID_SECRET
         }
-    });
+    };
+    var client = nodemailer.createTransport(sgTransport(options));
 
     const email = {
-        from: 'edTickets <adsahoo.24@gmail.com>', // sender address
+        from: 'edTickets <support@edSupport.com>', // sender address
         to: data.user, // list of receivers
         subject: 'Message from Admin', // Subject line
         html: `<p>Hello,
@@ -170,7 +171,7 @@ eventEmitter.on('admin-message',function(data){
              </p>` // plain text body
     };
 
-    transporter.sendMail(email, function (err, info) {
+    client.sendMail(email, function (err, info) {
         if (err)
             console.log(err);
         else

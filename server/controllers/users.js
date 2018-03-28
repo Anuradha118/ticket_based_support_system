@@ -6,6 +6,7 @@ var randomString=require('random-string');
 var sendotp=require('sendotp');
 var bcrypt=require('bcryptjs');
 var nodemailer=require('nodemailer');
+var sgTransport = require('nodemailer-sendgrid-transport');
 var _=require('lodash');
 var User=require('./../models/User');
 var responseGenerator=require('./../utils/responsegenerator');
@@ -18,22 +19,22 @@ eventEmitter.on('welcome_mail',function(data){
     console.log(data.email);
     console.log("Welcome " + data.firstname + " " + data.lastname);
     console.log(delete data.password);
-    var transporter = nodemailer.createTransport({
-        service: 'gmail',
+    var options = {
         auth: {
-            user: process.env.username,
-            pass: process.env.password
+            api_user: process.env.SENDGRID_USER,
+            api_key: process.env.SENDGRID_SECRET
         }
-    });
+    };
+    var client = nodemailer.createTransport(sgTransport(options));
 
     const email = {
-        from: 'edSupport <adsahoo.24@gmail.com>', // sender address
+        from: 'edSupport <support@edSupport.com>', // sender address
         to: data.email, // list of receivers
         subject: 'Welcome to edSupport', // Subject line
         html: `<p>Hello! ${data.firstname} ${data.lastname} Your account is created successfully.</p>` // plain text body
     };
 
-    transporter.sendMail(email, function (err, info) {
+    client.sendMail(email, function (err, info) {
         if (err)
             console.log(err);
         else
@@ -49,22 +50,22 @@ eventEmitter.on('send_otp',function(info){
     send_otp.send(info.mobile,"EdSupport",info.id,function(error,data,response){
         console.log(data);
     });
-    var transporter = nodemailer.createTransport({
-        service: 'gmail',
+    var options = {
         auth: {
-            user: process.env.username,
-            pass: process.env.password
+            api_user: process.env.SENDGRID_USER,
+            api_key: process.env.SENDGRID_SECRET
         }
-    });
+    };
+    var client = nodemailer.createTransport(sgTransport(options));
 
     const email = {
-        from: 'edSupport <adsahoo.24@gmail.com>', // sender address
+        from: 'edSupport <support@edSupport.com>', // sender address
         to: info.email, // list of receivers
         subject: 'Password Reset', // Subject line
         html: `<p>You have initiated a password reset.<br/>OTP for resetting the password : <b style="color:red">${info.id}</b>.Never share the OTP with anyone.</p>` // plain text body
     };
 
-    transporter.sendMail(email, function (err, info) {
+    client.sendMail(email, function (err, info) {
         if (err)
             console.log(err);
         else
