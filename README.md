@@ -32,20 +32,22 @@ to get the queries from their users and get it resolved.
   - When the user receives the answer or the admin receives the reply, an email notification is sent to the user concerned.
   - For the sake of simplicity, the Admin treated as a user of the system.
   - To reset password if user forgot, an otp is sent to the registered mobile number.
-  - User can upload file.
+  - User can upload file using 'ngFileUpload' in frontend and 'multer' in backend.
   - Admin can download the file from the ticket.
   - To send email 'nodemailer-sendgrid-transport' service is used.
-  
+  - To send OTP 'sendotp' package and MSG91 servic is used.
 # Pre-Requisites
   - Node.js should be installed.
   - MongoDB should be installed.
   - NPM should be installed.
-  - Sendgrid Username and Password should be there 
+  - Sendgrid Username and Password should be there.
+  - MSG91 Authkey should be there.
   
 # App Installation
 
 Setting up local server
-First run the local mongodb server, then add config.json inside server->configs with all the environment variables like PORT, JWT_SECRET,MONGODB_URI,SENDGRID_USER and SENDGRID_SECRET to send emails.
+
+First run the local mongodb server, then add config.json inside server->configs with all the environment variables like PORT, JWT_SECRET,MONGODB_URI,MSG91_AUTHKEY,SENDGRID_USER and SENDGRID_SECRET to send emails.
 
   - Download the code from github.
   - Unzip the folder 
