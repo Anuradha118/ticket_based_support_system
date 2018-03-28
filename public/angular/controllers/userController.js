@@ -37,7 +37,6 @@ myApp.controller('userController',['$http','$q','$location','$rootScope','$timeo
                     main.isError=response.data.error;
                 },function error(response){
                     console.log(response);
-                    $location.path('/500');
                 }
             );
 
@@ -62,6 +61,7 @@ myApp.controller('userController',['$http','$q','$location','$rootScope','$timeo
                 console.log(response);
                 main.signinMessage=response.data.message;
                 if(response.data.error){
+                    main.closeButton=response.data.error;
                     console.log('Error');
                 }else{
                     $rootScope.show=true;
@@ -139,7 +139,6 @@ myApp.controller('userController',['$http','$q','$location','$rootScope','$timeo
         alert('You are now logged out!');
         localStorage.removeItem('user');
         localStorage.removeItem('x-auth');
-        // main.signinMessage='Sign In to your Account';
         $rootScope.show = false;
         $location.path('/');
     }

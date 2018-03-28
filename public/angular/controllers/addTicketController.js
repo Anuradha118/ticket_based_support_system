@@ -20,7 +20,7 @@ myApp.controller('addTicketCtrl',['$location','$rootScope','TicketService','Uplo
     //if file is valid then it is uploaded
     main.upload=function(file){
         Upload.upload({
-            url:'https://fathomless-ocean-24339.herokuapp.com/user/upload',
+            url:'/user/upload',
             data:{file:file}
         }).then(function(response){
             console.log(response);

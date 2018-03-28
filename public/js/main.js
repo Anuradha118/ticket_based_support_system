@@ -73,7 +73,7 @@ $(document).ready(function () {
         e.preventDefault();
         var interval = setInterval(checkFunction, 1000);
         function checkFunction(){
-            //alert($("#closeValue").val());
+            // alert($("#closeValue").val());
             if($("#closeValue").val() == "false"){
                 //alert($("#check").val());
                 //alert($("#closeValue").val());

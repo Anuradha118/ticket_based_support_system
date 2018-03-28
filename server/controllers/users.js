@@ -118,7 +118,7 @@ router.post('/login',custValidator.login,function(req,res){
             myResponse=responseGenerator.generate(true, "Some error", 500, null);
             res.send(myResponse);
         }else if(user==null){
-            myResponse=responseGenerator.generate(true, "Invalid username", 409, null);
+            myResponse=responseGenerator.generate(true, "Invalid username", 400, null);
             res.send(myResponse);
         }else if(user){
             user.isValidPassword(body.password,function(valid){
@@ -129,7 +129,7 @@ router.post('/login',custValidator.login,function(req,res){
                     myResponse=responseGenerator.generate(false,"Login Successful.",200,{user:user,token:token});
                     res.send(myResponse);
                 }else{
-                    myResponse=responseGenerator.generate(true,"Wrong Password or Password didn't match",403,null);
+                    myResponse=responseGenerator.generate(true,"Wrong Password or Password didn't match",400,null);
                     res.send(myResponse);
                 }
             });
