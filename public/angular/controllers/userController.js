@@ -39,7 +39,7 @@ myApp.controller('userController',['$http','$q','$location','$rootScope','$timeo
                     console.log(response);
                 }
             );
-
+            
         main.firstName='';
         main.lastName='';
         main.email='';
